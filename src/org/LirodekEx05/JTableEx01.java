@@ -44,10 +44,11 @@ public class JTableEx01 extends JFrame {
 		
 		//------------update
 		
-		tableModel.setDataVector(null, colNames);
-		tableModel.addRow(new Object[] {3, "ccc", "7777-7777" });
-		tableModel.addRow(new Object[] {4, "ddd", "8888-8888" });
-		tableModel.addRow(new Object[] {5, "eee", "9999-9999" });
+//		tableModel.setDataVector(null, colNames);
+//		tableModel.addRow(new Object[] {3, "ccc", "7777-7777" });
+//		tableModel.addRow(new Object[] {4, "ddd", "8888-8888" });
+//		tableModel.addRow(new Object[] {5, "eee", "9999-9999" });
+		
 	}
 
 	public JTableEx01(String title) {
