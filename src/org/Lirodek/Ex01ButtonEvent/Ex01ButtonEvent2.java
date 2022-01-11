@@ -8,13 +8,14 @@ import java.awt.GridBagLayout;
 import java.awt.Label;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.print.attribute.standard.MediaSize.Engineering;
 import javax.swing.AbstractAction;
 
 import org.Lirodek.gulex.MyFrame.MyFrame;
 
-public class Ex01ButtonEvent extends MyFrame {
+public class Ex01ButtonEvent2 extends MyFrame implements ActionListener{
 	private Button[] btn = new Button[2];
 	{
 		for (int i = 0; i < 2; i++) {
@@ -25,7 +26,7 @@ public class Ex01ButtonEvent extends MyFrame {
 	private Panel centPan = new Panel(new GridBagLayout());
 	private Label txtLbl = new Label("didnt not press button");
 
-	public Ex01ButtonEvent() {
+	public Ex01ButtonEvent2() {
 		super("ButtonEventTest", 300, 100);
 		start();
 
@@ -39,49 +40,33 @@ public class Ex01ButtonEvent extends MyFrame {
 		southPan.add(btn[0]);
 		southPan.add(btn[1]);
 		ButtonEvent();
-
-		
-		
-
 	}
-
 	private void ButtonEvent() {
-		btn[0].addActionListener(new AbstractAction() 
-		{
-			int i=0;
-			@Override
-			public void actionPerformed(ActionEvent e) 
-			{
-				i++;
-				txtLbl.setText("[Result] First Button Press");
-				
-				
-				
-				Button btn = (Button)(e.getSource());
-				if(i%2==0)
-					btn.setBackground(Color.YELLOW);
-				else if(i%2==1)
-					btn.setBackground(Color.darkGray);
-			}
-			
-
-		});
-		
-		btn[1].addActionListener(new AbstractAction() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				txtLbl.setText("[Result] Second Button Press");
-				Button btn = (Button)(e.getSource());
-				btn.setBackground(Color.BLUE);
-			}
-		});
-		
+		  btn[0].addActionListener(this);
+	      btn[1].addActionListener(this);
 	}
+
 
 	public static void main(String[] args) {
-		new Ex01ButtonEvent().setVisible(true);
+		new Ex01ButtonEvent2().setVisible(true);
 
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(btn[0].equals(e.getSource()))
+			txtLbl.setText("[Result] Button 1 Press");
+		else
+			txtLbl.setText("[Result] Button 2 Press");
+//		if(e.getSource() instanceof Button)
+//		{
+//			Button btn = (Button)e.getSource();
+//			if(btn[0].equals(btn))
+//				txtLbl.setText("[Result] btn1 press");
+//			else
+//				txtLbl.setText("[Result] btn2 press");
+//		}
 	}
 
 }
